@@ -5,14 +5,14 @@ CREATE TABLE crime (
   population INT,
   unemployment FLOAT,
   violent_total FLOAT,
-	murder FLOAT,
-	rape FLOAT,
-	robbery FLOAT,
-	aggravated_assault FLOAT,
-	property_total FLOAT,
-	burglary FLOAT,
-	larceny_theft FLOAT,
-	vehicle_theft FLOAT	
+  murder FLOAT,
+  rape FLOAT,
+  robbery FLOAT,
+  aggravated_assault FLOAT,
+  property_total FLOAT,
+  burglary FLOAT,
+  larceny_theft FLOAT,
+  vehicle_theft FLOAT	
 );
 
 CREATE TABLE wage (
