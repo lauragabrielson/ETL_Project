@@ -80,6 +80,6 @@
 
 ### Load
 
-* Connect the Jupyter notebook to the SQL database using SQLAlchemy.
+* Connect the Jupyter notebook to the SQL database using SQLAlchemy, include your pgAdmin username and password.
 
 * Export the tables using Pandas.
