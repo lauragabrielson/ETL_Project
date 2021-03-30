@@ -2,17 +2,84 @@
 ## By: Laura Gabrielson, Luis Gomez, Mason Totall
 ### State Wages, Unemployment and Crime
 
-## Extraction
+## Instructions
 
-For this project, we extracted data from 3 .csv files (which are included in this repository):
-- [State Wage data from 1968-2020](https://www.kaggle.com/lislejoem/us-minimum-wage-by-state-from-1968-to-2017)
-- [Crime and Unemployment data from 1976-2014](https://www.kaggle.com/lydiavasil/crime-rate-and-unemployment-rate-by-state)
-- [State names and abbreviations](https://www.kaggle.com/doyouevendata/state-abbreviations)
+* Create in pgAdmin a new database called `crime_wage_db` then create the two following tables within:
+  
+  * A `crime` table that contains the columns:
 
-## Transformation
+    * `id`
+    
+    * `year`
 
-To treat the data, we used a Jupyter notebook and the Pandas package, deleting unneeded rows and filtering data for years present in both files. We also used the "State names and abbreviations" dataframe to keep a consistent state naming convention across both dataframes.
+    * `state`
 
-## Loading
+    * `population`
+    
+    * `unemployment`
 
-For this step we used PostgreSQL to create a SQL schema with two relevant tables to store the transformed data, then we used the SQLAlchemy package to connect to the PostgreSQL database and upload the files using the `pd.to_sql` function within Pandas.
+    * `violent_total`
+
+    * `murder`
+
+    * `rape`
+
+    * `robbery`
+
+    * `aggravated_assault`
+
+    * `property_total`
+
+    * `burglary`
+
+    * `larceny_theft`
+
+    * `vehicle_theft`
+
+  * A `wage` table that contains the columns:
+
+    * `id`
+    
+    * `year`
+
+    * `state`
+
+    * `state_min_wage`
+    
+    * `state_min_wage_2020_dollars`
+
+    * `federal_min_wage`
+
+    * `federal_min_wage_2020_dollars`
+
+    * `effective_min_wage`
+
+    * `effective_min_wage_2020_dollars`
+
+* Assign a primary key to each table, so the tables can be found by SQLAlchemy.
+
+* Perform the following ETL tasks in a Jupyter notebook:
+
+### Extract
+
+* Read the "Minimum Wage Data.csv", "crimebystatecombinedwithunemployment.csv" and "state_abbrev.csv" files using Pandas
+
+### Transform
+
+* Merge the State Abbreviation and Crime/Unemployment data frames on the `state` column.
+
+* Drop the state abbreviation column on the Crime/Unemployment dataframe.
+
+* Drop columns not present on the tables built in the Postgres database.
+
+* Rename the columns in the frames to comply with the columns present in the Postgres tables.
+
+* Duplicate the transformed dataframes to export them to the SQL database.
+
+* Filter out years not present in both databases using Pandas.
+
+### Load
+
+* Connect the Jupyter notebook to the SQL database using SQLAlchemy.
+
+* Export the tables using Pandas.
